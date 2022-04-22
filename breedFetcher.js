@@ -1,6 +1,8 @@
 const request = require('request');
 
-request(`https://api.thecatapi.com/v1/breeds/search?q=sib`, (error, response, body) => {
+const breed = process.argv.slice(2);
+
+request(`https://api.thecatapi.com/v1/breeds/search?q=${breed}`, (error, response, body) => {
   if (error) {console.log('error: ', error)};
   if (response.statusCode !== 200) {console.log('statusCode: ', response && response.statusCode)};
   const data = JSON.parse(body);
